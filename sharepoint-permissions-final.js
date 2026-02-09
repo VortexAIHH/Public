@@ -23,10 +23,12 @@
                     credentials: 'include'
                 });
 
-                // Handle throttling - wait and retry
+                // Handle throttling - wait and retry with MINUTE delays
                 if (response.status === 406 || response.status === 429) {
-                    const waitTime = Math.min(30000, 1000 * Math.pow(2, attempt)); // Exponential backoff, max 30s
-                    console.log(`      ⏳ Throttled (HTTP ${response.status}), waiting ${(waitTime / 1000).toFixed(1)}s before retry ${attempt + 1}/${retries}...`);
+                    // 1min, 3min, 6min, 12min, 15min (max)
+                    const waitMinutes = attempt === 0 ? 1 : Math.min(15, 3 * Math.pow(2, attempt - 1));
+                    const waitTime = waitMinutes * 60 * 1000;
+                    console.log(`      ⏳ Throttled (HTTP ${response.status}), waiting ${waitMinutes} minute(s) before retry ${attempt + 1}/${retries}...`);
                     await delay(waitTime);
                     continue;
                 }
@@ -35,8 +37,9 @@
                 return await response.json();
             } catch (e) {
                 if (attempt === retries - 1) throw e;
-                const waitTime = Math.min(30000, 1000 * Math.pow(2, attempt));
-                console.log(`      ⚠️  Error (${e.message}), waiting ${(waitTime / 1000).toFixed(1)}s before retry ${attempt + 1}/${retries}...`);
+                const waitMinutes = attempt === 0 ? 1 : Math.min(15, 3 * Math.pow(2, attempt - 1));
+                const waitTime = waitMinutes * 60 * 1000;
+                console.log(`      ⚠️  Error (${e.message}), waiting ${waitMinutes} minute(s) before retry ${attempt + 1}/${retries}...`);
                 await delay(waitTime);
             }
         }
@@ -46,6 +49,16 @@
     // Helper to add delay between requests (prevents throttling)
     function delay(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    // Helper to get group members
+    async function getGroupMembers(groupId) {
+        try {
+            const members = await getJSON(`${siteUrl}/_api/web/sitegroups/GetById(${groupId})/users`);
+            return members.d.results.map(u => u.Title || u.LoginName).join('; ');
+        } catch (e) {
+            return 'Unable to retrieve members';
+        }
     }
 
     // Helper to get permissions for any object
@@ -58,6 +71,13 @@
                 const member = assignment.Member;
                 const roles = assignment.RoleDefinitionBindings.results.map(r => r.Name).join(', ');
 
+                // Get group members if this is a SharePoint group
+                let groupMembers = '';
+                if (member.PrincipalType === 8) { // SharePoint Group
+                    console.log(`         Fetching members of group: ${member.Title}`);
+                    groupMembers = await getGroupMembers(member.Id);
+                }
+
                 results.push({
                     Scope: scope,
                     Location: location,
@@ -66,6 +86,7 @@
                     PrincipalType: getPrincipalTypeName(member.PrincipalType),
                     PrincipalName: member.Title || '',
                     PrincipalLoginName: member.LoginName || '',
+                    GroupMembers: groupMembers,
                     Roles: roles
                 });
             }
@@ -232,6 +253,7 @@
                             <th>Principal Type</th>
                             <th>Principal Name</th>
                             <th>Principal Login</th>
+                            <th>Group Members</th>
                             <th>Roles</th>
                         </tr>
                     </thead>
@@ -257,6 +279,7 @@
                 <td>${perm.PrincipalType}</td>
                 <td>${perm.PrincipalName}</td>
                 <td>${perm.PrincipalLoginName}</td>
+                <td style="font-size: 9px;">${perm.GroupMembers || ''}</td>
                 <td>${perm.Roles}</td>
             </tr>`;
         }
