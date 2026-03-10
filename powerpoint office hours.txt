@@ -1,0 +1,49 @@
+Tech Office Hours – 1 Hour Session
+Opening & Welcome (0–2 min)
+Host:
+Good [morning/afternoon], everyone. Thanks for joining Tech Office Hours today. I appreciate you taking the time to be here.
+The goal of this session is simple: to help the Proposal Operations team work faster, remove technical friction, and make our day‑to‑day work more consistent and less frustrating.
+Purpose & What to Expect (2–5 min)
+Host:
+Tech Office Hours exist to support you with anything technical that impacts proposal development. That includes SharePoint issues, document templates, workflow challenges, automation ideas, or anything that slows your work down.
+My role as the team’s technical resource is to streamline business processes, build automations where it makes sense, and help troubleshoot technical problems as they come up.
+If something can be answered quickly, demonstrated live, or fixed on the spot, we’ll handle it during this call.
+If an item needs deeper analysis, development, or work outside this meeting, it should go into the New Requirements Intake & Tracking List so it can be properly tracked, prioritized, and scheduled.
+You can find the New Requirements Intake & Tracking List using the link in the meeting invite or on the team site.
+hOffice Hours vs. Request List (5–8 min)
+Host:
+Just to set expectations, here’s how to decide what belongs where.
+Office Hours is best for: questions that can be answered in conversation, quick demos, on‑the‑spot troubleshooting, guidance on tools or best practices, and light configuration tips.
+The Request List is best for: automation or development work, investigations that need deeper analysis, fixes that require offline effort, or anything that needs to be tracked and scheduled.
+If something starts here but clearly needs more work, I’ll capture it and move it to the Request List after the meeting.
+1. Welcome & Quick Wins (8–18 min)
+Host:
+We’ll start each session with a quick win. This is a short, practical tip, tool, or feature that you can start using right away.
+[Share one new tool, feature, shortcut, or productivity tip. Keep it brief and actionable.]
+Since this is our first session, I’ll also briefly cover what I support, how you can work with me, and how these office hours are meant to help you.
+2. Spotlight Topic (18–38 min)
+Host:
+Next is our spotlight topic. Each session, we’ll do a deeper dive on one focused theme.
+Topics may include new technology or feature walkthroughs, best practices, demos or automation ideas, workflow improvements, or proposal lifecycle enhancements.
+Examples include avoiding SharePoint upload mistakes, understanding common error messages and how to fix them, version control and co‑authoring best practices, quick formatting fixes, or faster ways to edit list items.
+[Walk through today’s selected topic with examples or a demo.]
+3. Open Forum & Troubleshooting (38–58 min)
+Host:
+Now we’ll open it up. This is your time.
+Please bring any tech blockers, SharePoint errors, template issues, document automation ideas, or process pain points where a technical or infrastructure solution might help.
+We’ll focus on quick fixes and recommendations first. If something needs deeper follow‑up, I’ll capture it and move it to the Request List so it doesn’t get lost.
+4. Resources & Takeaways (58–63 min)
+Host:
+Before we wrap up, I’ll summarize any key links, documentation, or reference guides that came up today.
+The action item for this week is one small step I recommend you try based on today’s discussion.
+5. Feedback & Suggestions (63–68 min)
+Host:
+Finally, I’d love your feedback.
+What slowed you down this week? What task took longer than it should have? What felt repetitive or manual? Were there any errors or blockers that came up?
+Your feedback directly helps shape future topics and improvements.
+Closing & Reminder (68–70 min)
+Host:
+Thank you all for your time and participation today.
+As a reminder, the New Requirements Intake & Tracking List is the single place to submit any tech requests related to proposal development, including errors, access needs, automations, or template improvements.
+Anything submitted there will receive follow‑up for clarification, prioritization, and scheduling.
+Thanks again, and feel free to reach out if something comes up between sessions.
